@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="MyGantt.Views.ProjectPlan"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/" xmlns:menucontrol="clr-namespace:MyGantt.UserControls.MenuControls"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:v="clr-namespace:MyGantt.Views">
+    <Grid >
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <menucontrol:VerticalMenu Grid.Column="0" Command="{Binding MenuCommand}"/>
+        <Grid Grid.Column="1" VerticalAlignment="Stretch"  Background="#f0f0f0">
+            <v:Gantt />
+
+
+        </Grid>
+    </Grid>
+</UserControl>

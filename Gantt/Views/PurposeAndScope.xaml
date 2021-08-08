@@ -1,0 +1,81 @@
+﻿<UserControl x:Class="Gantt.Views.PurposeAndScope"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"     
+             xmlns:uc="clr-namespace:Gantt.UserControls.PurposeAndScopeControls"
+             prism:ViewModelLocator.AutoWireViewModel="True" Background="#f0f0f0">
+    <UserControl.Resources>
+        <Style x:Key="DefaultRichTextBox" TargetType="RichTextBox">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate>
+                        <DockPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" VerticalAlignment="Stretch" Background="White">
+                            <ScrollViewer DockPanel.Dock="Top" Foreground="{TemplateBinding Foreground}"   Margin="5,10,5,5" x:Name="PART_ContentHost"/>
+                            <Grid VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Height="2">
+                                <Grid.Style>
+                                    <Style TargetType="Grid">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Style.Triggers >
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition  Binding="{Binding Path=IsFocused, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type RichTextBox}}}" Value="True"/>
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Background" Value="#444f6b"/>
+
+                                            </MultiDataTrigger>
+
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                            </Grid>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+        <Style x:Key="DefaulTextBox" TargetType="TextBoxBase">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="{x:Type TextBoxBase}">
+                        <DockPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" VerticalAlignment="Center" Background="White">
+                            <ScrollViewer DockPanel.Dock="Top" Foreground="{TemplateBinding Foreground}"  Margin="5,5,5,5" x:Name="PART_ContentHost"/>
+                            <Grid VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Height="2">
+                                <Grid.Style>
+                                    <Style TargetType="Grid">
+                                        <Setter Property="Background" Value="Transparent"/>
+                                        <Style.Triggers >
+                                            <MultiDataTrigger>
+                                                <MultiDataTrigger.Conditions>
+                                                    <Condition  Binding="{Binding Path=IsFocused, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type TextBox}}}" Value="True"/>
+                                                </MultiDataTrigger.Conditions>
+                                                <Setter Property="Background" Value="#444f6b"/>
+                                                    
+                                            </MultiDataTrigger>
+
+                                        </Style.Triggers>
+                                    </Style>
+                                </Grid.Style>
+                            </Grid>
+                        </DockPanel>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+
+
+    </UserControl.Resources>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid>
+    <StackPanel Margin="20,20,0,0" Orientation="Vertical">
+        <Label Content="Cel projektu" FontSize="20" FontWeight="DemiBold"/>
+        <RichTextBox Style="{StaticResource DefaultRichTextBox}" Block.LineHeight="2" FontSize="12" Foreground="#59564e" VerticalContentAlignment="Stretch"  HorizontalAlignment="Stretch" MinHeight="140" Margin="0,10,20,0"/>
+        <Label Margin="0,50,0,0" Content="Zakres projektu" FontSize="20" FontWeight="DemiBold"/>
+        <RichTextBox Style="{StaticResource DefaultRichTextBox}" Block.LineHeight="2" FontSize="12" Foreground="#59564e" VerticalContentAlignment="Stretch"  HorizontalAlignment="Stretch" MinHeight="140" Margin="0,10,20,0"/>
+        <Label Margin="0,50,0,0"  Content="Macierz kompromisów projektowych" FontSize="20" FontWeight="DemiBold"/>
+        <uc:CompromiseMatrix />
+
+        </StackPanel>
+            <StackPanel Background="Transparent" Visibility="Collapsed"/>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

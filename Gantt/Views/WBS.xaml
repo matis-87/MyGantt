@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="Gantt.Views.WBS"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"         
+             xmlns:viewmodel="clr-namespace:Gantt.ViewModels"
+             prism:ViewModelLocator.AutoWireViewModel="True"
+             xmlns:wbstable="clr-namespace:Gantt.UserControls.WBSControls.WBSTable">
+    <UserControl.Resources>
+  
+ 
+        <ResourceDictionary>
+
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Styles/MainButton.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/DefaultRichTextBox.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/DefaultTextBox.xaml"/>
+                <ResourceDictionary Source="/Resources/Styles/DefaultComboBox.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+
+    </UserControl.Resources>
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto">
+            <Grid>
+                <StackPanel Margin="20,20,0,0" Orientation="Vertical">
+                    <DockPanel>
+                        <Label Content="WBS" FontSize="20" FontWeight="DemiBold"/>
+                        <Button  Style="{StaticResource MainButton}" Margin="0,0,20,0"  Width="150" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Zapisz"/>
+                    </DockPanel>
+                    <RichTextBox VerticalAlignment="Center" Style="{StaticResource DefaultRichTextBox}" Block.LineHeight="2" FontSize="12" Foreground="#59564e" VerticalContentAlignment="Center"  HorizontalAlignment="Stretch" MinHeight="140" Margin="0,10,20,0"/>
+                    <DockPanel Margin="0,20,0,0">
+                        <StackPanel Orientation="Horizontal" DockPanel.Dock="Right" HorizontalAlignment="Right">
+                            <Button  Style="{StaticResource MainButton}"  Command="{Binding AddNewTaskCommand}" Margin="0,0,20,0"  Width="150" Height="40" VerticalAlignment="Bottom" HorizontalAlignment="Right" Content="Dodaj"/>
+                        </StackPanel>
+                    </DockPanel>
+                    <wbstable:WBSTable ItemsSource="{Binding Tasks}"/>
+
+                </StackPanel>
+            </Grid>
+        </ScrollViewer>
+
+    </Grid>
+</UserControl>

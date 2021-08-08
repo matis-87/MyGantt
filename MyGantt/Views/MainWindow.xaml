@@ -1,0 +1,38 @@
+﻿<Window x:Class="MyGantt.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        xmlns:local ="clr-namespace:MyGantt.Model" xmlns:usercontrols="clr-namespace:MyGantt.UserControls" 
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity" 
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:menucontrol ="clr-namespace:MyGantt.UserControls.MenuControls"
+        xmlns:v="clr-namespace:MyGantt.Views"
+         WindowState="Maximized"
+        WindowStyle="None"
+        ResizeMode="NoResize"
+        Title="{Binding Title}" Height="350" Width="525"
+               AllowsTransparency="True"
+        Background="Transparent">
+    <Border x:Name="_border" BorderBrush="Transparent" BorderThickness="0"    Background="#2a3950" >
+        <Border.Effect>
+            <DropShadowEffect x:Name="BroderShadow" ShadowDepth="5"   Opacity="0.3"  Color="#575757"/>
+        </Border.Effect>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50" />
+                <RowDefinition/>
+
+            </Grid.RowDefinitions>
+            <Grid Grid.Row="0" HorizontalAlignment="Stretch"  Background="#202b3c">
+                <Label Margin="20,0,0,0" Content="{Binding Username}" HorizontalAlignment="Left" VerticalAlignment="Center" Foreground="White"/>
+                <Label Background="Transparent" Content=" TrendGlass etap 2" FontSize="18" VerticalContentAlignment="Center" MouseMove="Label_MouseMove" MouseDoubleClick="Label_MouseDoubleClick" HorizontalContentAlignment="Center" Foreground="White"/>
+                <Button Width="50" FontSize="16" Foreground="White" Style="{StaticResource TaskBarButton}"  HorizontalAlignment="Right"  Height="50" Content="X" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top"  Click="Button_Click"/>
+                <Button Width="50" Style="{StaticResource TaskBarButton}"   HorizontalAlignment="Left"  Height="50"   HorizontalContentAlignment="Center" VerticalContentAlignment="Center" VerticalAlignment="Top">
+                    <Image VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0,0,0,0" Height="25" Source= "/Resources/Img/arrowBack.png"/>
+                </Button>
+            </Grid>
+            <v:ProjectPlan Grid.Row="1"/>
+        </Grid>
+    </Border>
+</Window>

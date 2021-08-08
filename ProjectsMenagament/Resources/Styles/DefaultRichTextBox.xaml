@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MSDNSample" xmlns:Themes="clr-namespace:Microsoft.Windows.Themes;assembly=PresentationFramework.Aero">
+
+    <Style x:Key="DefaultRichTextBox" TargetType="{x:Type RichTextBox}">
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate>
+                    <DockPanel Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" VerticalAlignment="Stretch" Background="White">
+                        <ScrollViewer DockPanel.Dock="Top" Foreground="{TemplateBinding Foreground}"   Margin="5,10,5,5" x:Name="PART_ContentHost"/>
+                        <Grid VerticalAlignment="Bottom" DockPanel.Dock="Bottom" Height="2">
+                            <Grid.Style>
+                                <Style TargetType="{x:Type Grid}">
+                                    <Setter Property="Background" Value="Transparent"/>
+                                    <Style.Triggers >
+                                        <MultiDataTrigger>
+                                            <MultiDataTrigger.Conditions>
+                                                <Condition  Binding="{Binding IsFocused, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type RichTextBox}}}" Value="True"/>
+                                            </MultiDataTrigger.Conditions>
+                                            <Setter Property="Background" Value="#444f6b"/>
+
+                                        </MultiDataTrigger>
+
+                                    </Style.Triggers>
+                                </Style>
+                            </Grid.Style>
+                        </Grid>
+                    </DockPanel>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

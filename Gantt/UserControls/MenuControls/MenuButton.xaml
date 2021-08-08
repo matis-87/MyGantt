@@ -1,0 +1,104 @@
+﻿<UserControl x:Class="Gantt.UserControls.MenuControls.MenuButton"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Gantt.UserControls.MenuControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
+              Name="me">
+    <UserControl.Resources>
+        <local:CurrentButtonConverter x:Key="CurrentButton"/>
+        <Style  x:Key="Button2" TargetType="Button">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border BorderBrush="LightGray" Background="{TemplateBinding Background}" BorderThickness="0,0,0,0">
+                            <ContentPresenter Content="{TemplateBinding Button.Content}" />
+                        </Border>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#444f6b"/>
+                    <Setter Property="Opacity" Value="1"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </UserControl.Resources>
+
+    <Button Opacity="1"  Click="Button_Click"  FontSize="14" Height="65" Style="{StaticResource Button2}">
+
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Column="0" >
+                <Grid.Style>
+                    <Style TargetType="Grid">
+                        <Setter Property="Background" Value="Transparent"/>
+                        <Style.Triggers>
+                            <MultiDataTrigger >
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Value="True">
+                                        <Condition.Binding>
+                                            <MultiBinding Converter="{StaticResource CurrentButton}">
+                                                <Binding Path="Choice" ElementName="me" />
+                                                <Binding Path="Number" ElementName="me"  />
+                                            </MultiBinding>
+                                        </Condition.Binding>
+                                    </Condition>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="White"/>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Opacity" Value="1"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </Grid.Style>
+            </Grid>
+            <StackPanel Grid.Column="1" Orientation="Vertical">
+                <StackPanel.Style>
+                    <Style TargetType="StackPanel">
+                        <Setter Property="Opacity" Value="0.7"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#444f6b"/>
+                                <Setter Property="Opacity" Value="1"/>
+                            </Trigger>
+                            <MultiDataTrigger >
+                                <MultiDataTrigger.Conditions>
+                                    <Condition Value="True">
+                                        <Condition.Binding>
+                                            <MultiBinding Converter="{StaticResource CurrentButton}">
+                                                <Binding Path="Choice" ElementName="me" />
+                                                <Binding Path="Number" ElementName="me"  />
+                                            </MultiBinding>
+                                        </Condition.Binding>
+                                    </Condition>
+                                </MultiDataTrigger.Conditions>
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <RadialGradientBrush Center="0.5,0.5" RadiusX="2" RadiusY="5"  GradientOrigin="0,0.5">
+                                            <GradientStop Color="#445582" Offset="0.0" />
+                                            <GradientStop Color="#2a3950" Offset="0.1" />
+                                        </RadialGradientBrush>
+                                    </Setter.Value>
+                                </Setter>
+                                <Setter Property="Opacity" Value="1"/>
+                            </MultiDataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </StackPanel.Style>
+                <Image Margin="0,10,0,0" Height="25" Source="{Binding Path= ImgPath, ElementName=me}"/>
+                <Label Foreground="White" FontSize="11" HorizontalAlignment="Center"  Content="{Binding  Path=Label, ElementName=me}"/>
+            </StackPanel>
+        </Grid>
+    </Button>
+</UserControl>

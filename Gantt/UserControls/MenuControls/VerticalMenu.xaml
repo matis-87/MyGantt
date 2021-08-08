@@ -1,0 +1,26 @@
+﻿<UserControl x:Class="Gantt.UserControls.MenuControls.VerticalMenu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Gantt.UserControls.MenuControls"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" 
+             Name="em">
+    <StackPanel Orientation="Vertical" Grid.Column="0"  Background="#2a3950"   >
+
+        <local:MenuButton MyCommand="{Binding Command, ElementName=em}"  Choice="{Binding CurrentNumber, Mode=TwoWay, ElementName=em}" Number="PurposeAndScope"  ImgPath="/Resources/Img/scope.png" Label="Cele i zakres"/>
+        <local:MenuButton MyCommand="{Binding Command, ElementName=em}" Choice="{Binding CurrentNumber, Mode=TwoWay, ElementName=em}"  Number="Enviroment"  ImgPath="/Resources/Img/enviroment.png" Label="Otoczenie"/>
+        <local:MenuButton MyCommand="{Binding Command, ElementName=em}"   Choice="{Binding CurrentNumber, Mode=TwoWay, ElementName=em}" Number="Stakholders"   ImgPath="/Resources/Img/team.png" Label="Interesariusze"/>
+        <local:MenuButton MyCommand="{Binding Command, ElementName=em}"  Choice="{Binding CurrentNumber, Mode=TwoWay, ElementName=em}" Number="Team"   ImgPath="/Resources/Img/team2.png" Label="Zespół"/>
+        <local:MenuButton MyCommand="{Binding Command, ElementName=em}"  Choice="{Binding CurrentNumber, Mode=TwoWay, ElementName=em}" Number="WBS"   ImgPath="/Resources/Img/wbs.png" Label="WBS"/>
+        <local:MenuButton MyCommand="{Binding Command, ElementName=em}"  Choice="{Binding CurrentNumber, Mode=TwoWay, ElementName=em}" Number="RACIMatrix"   ImgPath="/Resources/Img/raci.png" Label="Macierz RACI"/>
+        <local:MenuButton MyCommand="{Binding Command, ElementName=em}"  Choice="{Binding CurrentNumber, Mode=TwoWay, ElementName=em}" Number="GanttChart"  ImgPath="/Resources/Img/gantt.png" Label="Harmonogram"/>
+        <local:MenuButton MyCommand="{Binding Command, ElementName=em}"  Choice="{Binding CurrentNumber, Mode=TwoWay, ElementName=em}" Number="Budget"  ImgPath="/Resources/Img/budget.png" Label="Budżet"/>
+        <local:MenuButton MyCommand="{Binding Command, ElementName=em}"  Choice="{Binding CurrentNumber, Mode=TwoWay, ElementName=em}" Number="Cooperation"  ImgPath="/Resources/Img/collaboration.png" Label="Współpraca"/>
+        <local:MenuButton MyCommand="{Binding Command, ElementName=em}"  Choice="{Binding CurrentNumber, Mode=TwoWay, ElementName=em}" Number="Risk"   ImgPath="/Resources/Img/risk.png" Label="Ryzyka"/>
+
+    </StackPanel>
+
+</UserControl>
+
